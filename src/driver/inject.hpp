@@ -127,6 +127,235 @@ typedef struct _MANUAL_MAP_STUB_PARAM
 
 } MANUAL_MAP_STUB_PARAM, *PMANUAL_MAP_STUB_PARAM;
 
+/*
+using DllMain_t = BOOL(WINAPI *)(HMODULE, DWORD, PVOID);
+using RtlAddFunctionTable_t = decltype(&RtlAddFunctionTable);
+using LdrpHandleTlsData_t = NTSTATUS(__thiscall *)(PVOID);
+using RtlAddVectoredExceptionHandler_t = decltype(&AddVectoredExceptionHandler);
+using LoadLibraryA_t = decltype(&LoadLibraryA);
+using GetProcAddress_t = decltype(&GetProcAddress);
+
+void ManualMapShellcode()
+{
+    volatile auto param = reinterpret_cast<PMANUAL_MAP_STUB_PARAM>(0xDEADBEEFDEADBEEF);
+
+    if (!param || InterlockedExchange(&param->Lock, 1) != 0)
+    {
+        return;
+    }
+
+    param->Result = MANUAL_MAP_STUB_RESULT_FAIL;
+
+    const LdrpHandleTlsData_t fnLdrpHandleTlsData = reinterpret_cast<LdrpHandleTlsData_t>(param->LdrpHandleTlsData);
+    const RtlAddFunctionTable_t fnRtlAddFunctionTable =
+        reinterpret_cast<RtlAddFunctionTable_t>(param->RtlAddFunctionTable);
+    const RtlAddVectoredExceptionHandler_t fnRtlAddVectoredExceptionHandler =
+        reinterpret_cast<RtlAddVectoredExceptionHandler_t>(param->RtlAddVectoredExceptionHandler);
+    const LoadLibraryA_t fnLoadLibraryA = reinterpret_cast<LoadLibraryA_t>(param->LoadLibraryA);
+    const GetProcAddress_t fnGetProcAddress = reinterpret_cast<GetProcAddress_t>(param->GetProcAddress);
+
+    BOOL dllMainResult = FALSE;
+
+    // Resolve relocations
+    //
+    if (param->RelocationDirectory.VirtualAddress && param->RelocationDirectory.Size && param->Delta)
+    {
+        auto *baseRelocation =
+            reinterpret_cast<PIMAGE_BASE_RELOCATION>(param->BaseAddress + param->RelocationDirectory.VirtualAddress);
+        if (baseRelocation)
+        {
+            while (baseRelocation->VirtualAddress)
+            {
+                if (baseRelocation->SizeOfBlock >= sizeof(IMAGE_BASE_RELOCATION))
+                {
+                    const ULONG AmountOfEntries =
+                        (baseRelocation->SizeOfBlock - sizeof(IMAGE_BASE_RELOCATION)) / sizeof(WORD);
+                    WORD *pRelativeInfo = reinterpret_cast<WORD *>(baseRelocation + 1);
+
+                    for (auto i = 0ul; i < AmountOfEntries; i++)
+                    {
+                        int Type = pRelativeInfo[i] >> 12;
+                        int Offset = pRelativeInfo[i] & 0xfff;
+
+                        PUCHAR relocAddr =
+                            reinterpret_cast<PUCHAR>(param->BaseAddress) + baseRelocation->VirtualAddress + Offset;
+
+                        switch (Type)
+                        {
+                        case IMAGE_REL_BASED_LOW: {
+                            *((UINT16 *)relocAddr) += LOWORD(param->Delta);
+                            break;
+                        }
+                        case IMAGE_REL_BASED_HIGH: {
+                            *((UINT16 *)relocAddr) += HIWORD(param->Delta);
+                            break;
+                        }
+                        case IMAGE_REL_BASED_HIGHLOW: {
+                            *((UINT32 *)relocAddr) += (INT32)param->Delta;
+                            break;
+                        }
+                        case IMAGE_REL_BASED_DIR64: {
+                            *((ULONG64 *)relocAddr) += param->Delta;
+                            break;
+                        }
+                        default:
+                            break;
+                        }
+                    }
+                }
+                baseRelocation = reinterpret_cast<PIMAGE_BASE_RELOCATION>(reinterpret_cast<PUCHAR>(baseRelocation) +
+                                                                          baseRelocation->SizeOfBlock);
+            }
+        }
+    }
+
+    // Resolve imports
+    //
+    if (param->ImportDirectory.VirtualAddress && param->ImportDirectory.Size)
+    {
+        auto importDescriptor =
+            reinterpret_cast<PIMAGE_IMPORT_DESCRIPTOR>(param->BaseAddress + param->ImportDirectory.VirtualAddress);
+        if (importDescriptor)
+        {
+            while (importDescriptor->Characteristics)
+            {
+                auto origFirstThunk =
+                    reinterpret_cast<PIMAGE_THUNK_DATA64>(param->BaseAddress + importDescriptor->OriginalFirstThunk);
+                auto firstThunk =
+                    reinterpret_cast<PIMAGE_THUNK_DATA64>(param->BaseAddress + importDescriptor->FirstThunk);
+
+                auto libraryName = reinterpret_cast<LPCSTR>(param->BaseAddress + importDescriptor->Name);
+
+                const HMODULE module = fnLoadLibraryA(libraryName);
+                if (!module)
+                {
+                    goto Exit;
+                }
+
+                while (origFirstThunk->u1.AddressOfData)
+                {
+                    PVOID functionAddress = nullptr;
+                    LPCSTR procedureName = nullptr;
+
+                    if (IMAGE_SNAP_BY_ORDINAL64(origFirstThunk->u1.Ordinal))
+                    {
+                        procedureName = (LPCSTR)(IMAGE_ORDINAL64(origFirstThunk->u1.Ordinal));
+                    }
+                    else
+                    {
+                        auto importByName = reinterpret_cast<PIMAGE_IMPORT_BY_NAME>(param->BaseAddress +
+                                                                                    origFirstThunk->u1.AddressOfData);
+
+                        procedureName = (LPCSTR)(importByName->Name);
+                    }
+
+                    functionAddress = fnGetProcAddress(module, procedureName);
+                    if (!functionAddress)
+                    {
+                        goto Exit;
+                    }
+
+                    firstThunk->u1.Function = (ULONGLONG)functionAddress;
+                    origFirstThunk++;
+                    firstThunk++;
+                }
+
+                importDescriptor++;
+            }
+        }
+    }
+
+    // Initialize security cookie
+    //
+    if (param->LoadConfigDirectory.VirtualAddress && param->LoadConfigDirectory.Size)
+    {
+        const IMAGE_DATA_DIRECTORY *loadConfigDirectory = &param->LoadConfigDirectory;
+
+        PULONG64 cookie = reinterpret_cast<PULONG64>((reinterpret_cast<IMAGE_LOAD_CONFIG_DIRECTORY64 *>(
+                                                          param->BaseAddress + loadConfigDirectory->VirtualAddress))
+                                                         ->SecurityCookie);
+
+        const ULONGLONG cookieVal = _rotl(__rdtsc(), 0xF);
+
+        *cookie = cookieVal;
+
+        if (*cookie == 0x2B992DDFA232)
+        {
+            (*cookie)++;
+        }
+    }
+
+    // Initialize TLS callbacks
+    //
+    if (param->TlsDataDirectory.VirtualAddress && param->TlsDataDirectory.Size)
+    {
+        const IMAGE_DATA_DIRECTORY *tlsDataDirectory = &param->TlsDataDirectory;
+
+        IMAGE_TLS_DIRECTORY *tlsDirectory =
+            reinterpret_cast<IMAGE_TLS_DIRECTORY *>(param->BaseAddress + tlsDataDirectory->VirtualAddress);
+
+        auto *pCallback = reinterpret_cast<PIMAGE_TLS_CALLBACK *>(tlsDirectory->AddressOfCallBacks);
+        for (; pCallback && (*pCallback); ++pCallback)
+        {
+            auto Callback = *pCallback;
+            Callback((PVOID)param->BaseAddress, DLL_PROCESS_ATTACH, nullptr);
+        }
+    }
+
+    // Initialize static TLS
+    //
+    if (fnLdrpHandleTlsData)
+    {
+        _LDR_DATA_TABLE_ENTRY_BASE64 Entry;
+        memzero(&Entry, sizeof(Entry));
+
+        Entry.DllBase = param->BaseAddress;
+
+        if (!NT_SUCCESS(fnLdrpHandleTlsData(&Entry)))
+        {
+            goto Exit;
+        }
+    }
+
+    // Setup exception support
+    //
+    if (fnRtlAddFunctionTable)
+    {
+        const IMAGE_DATA_DIRECTORY *exceptionDataDirectory = &param->ExceptionDataDirectory;
+
+        if (exceptionDataDirectory->VirtualAddress && exceptionDataDirectory->Size)
+        {
+            if (!fnRtlAddFunctionTable(PRUNTIME_FUNCTION(param->BaseAddress + exceptionDataDirectory->VirtualAddress),
+                                       exceptionDataDirectory->Size / sizeof(RUNTIME_FUNCTION), param->BaseAddress))
+            {
+                goto Exit;
+            }
+
+            // Register VEH shellcode that will fix C++ exceptions
+            //
+            if (!fnRtlAddVectoredExceptionHandler(
+                    0, reinterpret_cast<PVECTORED_EXCEPTION_HANDLER>(param->ExceptionHandler)))
+            {
+                goto Exit;
+            }
+        }
+    }
+
+    // Invoke the DLL entrypoint
+    //
+    dllMainResult = reinterpret_cast<DllMain_t>(param->BaseAddress + param->EntryPoint)((HMODULE)param->BaseAddress,
+                                                                                        DLL_PROCESS_ATTACH, nullptr);
+    if (dllMainResult != TRUE)
+    {
+        goto Exit;
+    }
+
+    param->Result = MANUAL_MAP_STUB_RESULT_SUCCESS;
+
+Exit:
+    return;
+}
+*/
 static UCHAR g_shellcodeManualMapStub[] =
     {0x48, 0x81, 0xEC, 0x08, 0x02, 0x00, 0x00, 0x48, 0xB8, 0xEF, 0xBE, 0xAD, 0xDE, 0xEF, 0xBE, 0xAD, 0xDE, 0x48, 0x89,
      0x44, 0x24, 0x20, 0x48, 0x8B, 0x44, 0x24, 0x20, 0x48, 0x85, 0xC0, 0x74, 0x16, 0x48, 0x8B, 0x44, 0x24, 0x20, 0x48,
@@ -231,6 +460,33 @@ static UCHAR g_shellcodeManualMapStub[] =
      0xEB, 0x0B, 0xEB, 0x09, 0x48, 0x8B, 0x44, 0x24, 0x20, 0xC6, 0x40, 0x74, 0x01, 0x48, 0x81, 0xC4, 0x08, 0x02, 0x00,
     0x00, 0xC3, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC};
 
+/*
+#define EH_MAGIC_NUMBER1 0x19930520
+#define EH_PURE_MAGIC_NUMBER1 0x01994000
+#define EH_EXCEPTION_NUMBER ('msc' | 0xE0000000)
+
+LONG CALLBACK ExceptionHandlerShellcode(PEXCEPTION_POINTERS ex)
+{
+    ULONG_PTR imageBase = 0xDEADBEEFDEADBEEF;
+    ULONG imageSize = 0xBEEFDEAD;
+
+    if (ex->ExceptionRecord->ExceptionCode == EH_EXCEPTION_NUMBER)
+    {
+        if (ex->ExceptionRecord->ExceptionInformation[2] >= imageBase &&
+            ex->ExceptionRecord->ExceptionInformation[2] < imageBase + imageSize)
+        {
+            if (ex->ExceptionRecord->ExceptionInformation[0] == EH_PURE_MAGIC_NUMBER1 &&
+                ex->ExceptionRecord->ExceptionInformation[3] == 0)
+            {
+                ex->ExceptionRecord->ExceptionInformation[0] = (ULONG_PTR)EH_MAGIC_NUMBER1;
+
+                ex->ExceptionRecord->ExceptionInformation[3] = imageBase;
+            }
+        }
+    }
+    return EXCEPTION_CONTINUE_SEARCH;
+}
+*/
 static UCHAR g_shellcodeExceptionHandlerStub[] = {
     0x48, 0x83, 0xEC, 0x18, 0x48, 0x89, 0x0C, 0x24, 0x48, 0xB8, 0xEF, 0xBE, 0xAD, 0xDE, 0xEF, 0xBE, 0xAD, 0xDE,
     0x48, 0x89, 0x44, 0x24, 0x08, 0xC7, 0x44, 0x24, 0x14, 0xAD, 0xDE, 0xEF, 0xBE, 0x48, 0x8B, 0x04, 0x24, 0x48,
