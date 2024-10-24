@@ -1,0 +1,3 @@
+[submodule "thirdparty/systeminformer"]
+	path = thirdparty/systeminformer
+	url = https://github.com/winsiderss/systeminformer.git

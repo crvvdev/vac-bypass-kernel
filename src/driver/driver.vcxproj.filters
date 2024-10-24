@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="ioctl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="crc32.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="drivermain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="inject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="misc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mutex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bypass.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="callbacks.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="dynamic.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="syscall_hook.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="syscall_table.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="threads.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="processes.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="hde\hde64.cpp">
+      <Filter>Header Files\third-party\hde</Filter>
+    </ClCompile>
+    <ClCompile Include="hooks.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ioctl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="memory.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inject.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="misc.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mutex.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="crc32.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="def.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="trace.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ThirdParty\scope_guard\include\scope_guard.hpp">
+      <Filter>Header Files\third-party\scope_guard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\shared.hpp">
+      <Filter>Header Files\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\fnv1a\include\fnv1a.hpp">
+      <Filter>Header Files\third-party\fnv1a</Filter>
+    </ClInclude>
+    <ClInclude Include="dynamic.hpp">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="callbacks.hpp">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="bypass.hpp">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="hooks.hpp">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="syscall_table.hpp">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="syscall_hook.hpp">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="processes.hpp">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="threads.hpp">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="hde\hde64.h">
+      <Filter>Header Files\third-party\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="hde\pstdint.h">
+      <Filter>Header Files\third-party\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="hde\table64.h">
+      <Filter>Header Files\third-party\hde</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{c9b72a50-b0df-4873-a436-35007e43c975}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\third-party">
+      <UniqueIdentifier>{d27a0dd5-dcf5-4e5e-8801-cff85c665694}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\third-party\scope_guard">
+      <UniqueIdentifier>{5fcb4f32-ab34-4366-a795-2fb8376e36b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\shared">
+      <UniqueIdentifier>{b8fe1055-920b-41bb-b76a-4370ebb82ae0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{21d8472a-54b5-481f-979c-02b6fac51938}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\third-party\fnv1a">
+      <UniqueIdentifier>{2bb3dde8-931f-4d04-9ecd-9abf272dcbae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\interfaces">
+      <UniqueIdentifier>{08cf7942-bf6e-49f6-9fb3-8da8b051b321}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\interfaces">
+      <UniqueIdentifier>{02dda5fd-149a-47d7-a903-b32d34f87cbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\third-party\hde">
+      <UniqueIdentifier>{d569c611-a5d6-45f1-a737-12d1bdad6fc4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

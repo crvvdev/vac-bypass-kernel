@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Driver Files">
+      <UniqueIdentifier>{8E41214B-6785-4CFE-B992-037D68949A14}</UniqueIdentifier>
+      <Extensions>inf;inv;inx;mof;mc;</Extensions>
+    </Filter>
+    <Filter Include="Header Files\nth">
+      <UniqueIdentifier>{f4c4e99e-2501-4f34-9287-2caf344a9b72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\third-party">
+      <UniqueIdentifier>{e45a8a5f-a503-40f7-b5b5-ecef19fa3128}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\third-party\fnv1a">
+      <UniqueIdentifier>{70a8ef5d-0e1b-4d3e-b588-bb1812a99155}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\third-party\obfuscateu">
+      <UniqueIdentifier>{f43c8fd9-1bd2-4cf8-8c1a-4b4344f8e76c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\third-party\scope_guard">
+      <UniqueIdentifier>{d37a7774-90bc-4c53-bc54-c21ab12b2171}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\shared">
+      <UniqueIdentifier>{f0a0e1b5-a36b-41dd-8061-3c49b32d3884}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\third-party\crypto">
+      <UniqueIdentifier>{76c73615-408a-4f0b-8719-710a4cb4844b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\third-party\crypto\ed25519">
+      <UniqueIdentifier>{b99db77d-36c2-43c7-98e4-b7f20fa5f66b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\third-party\crypto\xchacha20">
+      <UniqueIdentifier>{c15343cf-fd67-4b57-909e-c395007f04a4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="drivermain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bypass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="callbacks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="comms.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="crc32.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dynamic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hooks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="misc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="syscall_hook.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="syscall_table.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="threads.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tracking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zydis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mutex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="inject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\curve25519-donna-32bit.c">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\curve25519-donna-helpers.c">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\curve25519-donna-scalarmult-base.c">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\ed25519.c">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\ed25519-donna-32bit-tables.c">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\ed25519-donna-basepoint-table.c">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\ed25519-donna-impl-base.c">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\ed25519-keccak.c">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\ed25519-sha3.c">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\modm-donna-32bit.c">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\thirdparty\xchacha20\src\xchacha20.c">
+      <Filter>Header Files\third-party\crypto\xchacha20</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\thirdparty\trezor-firmware\crypto\sha2.c">
+      <Filter>Header Files\third-party\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\thirdparty\trezor-firmware\crypto\rand.c">
+      <Filter>Header Files\third-party\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\thirdparty\trezor-firmware\crypto\memzero.c">
+      <Filter>Header Files\third-party\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\thirdparty\trezor-firmware\crypto\sha3.c">
+      <Filter>Header Files\third-party\crypto</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="syscall_hook.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hooks.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mutex.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nth\ntapi.h">
+      <Filter>Header Files\nth</Filter>
+    </ClInclude>
+    <ClInclude Include="def.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dynamic.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="misc.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="syscall_table.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tracking.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="trace.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="threads.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="memory.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zydis.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ThirdParty\fnv1a\include\fnv1a.hpp">
+      <Filter>Header Files\third-party\fnv1a</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ThirdParty\obfuscateu\include\include.hpp">
+      <Filter>Header Files\third-party\obfuscateu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ThirdParty\scope_guard\include\scope_guard.hpp">
+      <Filter>Header Files\third-party\scope_guard</Filter>
+    </ClInclude>
+    <ClInclude Include="callbacks.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bypass.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="crc32.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ThirdParty\systeminformer\KSystemInformer\include\ntfill.h">
+      <Filter>Header Files\nth</Filter>
+    </ClInclude>
+    <ClInclude Include="comms.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inject.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\curve25519-donna-32bit.h">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\curve25519-donna-helpers.h">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\curve25519-donna-scalarmult-base.h">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\ed25519.h">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\ed25519-donna.h">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\ed25519-donna-32bit-tables.h">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\ed25519-donna-basepoint-table.h">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\ed25519-donna-impl-base.h">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\ed25519-donna-portable.h">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\ed25519-hash-custom.h">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\ed25519-hash-custom-keccak.h">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\ed25519-hash-custom-sha3.h">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\ed25519-keccak.h">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\ed25519-sha3.h">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\trezor-firmware\crypto\ed25519-donna\modm-donna-32bit.h">
+      <Filter>Header Files\third-party\crypto\ed25519</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\xchacha20\src\xchacha20.h">
+      <Filter>Header Files\third-party\crypto\xchacha20</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\trezor-firmware\crypto\sha2.h">
+      <Filter>Header Files\third-party\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\trezor-firmware\crypto\rand.h">
+      <Filter>Header Files\third-party\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\trezor-firmware\crypto\memzero.h">
+      <Filter>Header Files\third-party\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared.hpp">
+      <Filter>Header Files\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\thirdparty\trezor-firmware\crypto\sha3.h">
+      <Filter>Header Files\third-party\crypto</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="pg.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+  </ItemGroup>
+</Project>

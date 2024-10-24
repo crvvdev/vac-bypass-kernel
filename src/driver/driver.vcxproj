@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug - Infinityhook|x64">
+      <Configuration>Debug - Infinityhook</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release - Infinityhook|x64">
+      <Configuration>Release - Infinityhook</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{017507CD-66FF-4256-82A5-1A3B799DBFB5}</ProjectGuid>
+    <TemplateGuid>{dd38f7fc-d7bd-488b-9242-7d8754cde80d}</TemplateGuid>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <Configuration>Debug</Configuration>
+    <Platform Condition="'$(Platform)' == ''">Win32</Platform>
+    <RootNamespace>driver</RootNamespace>
+    <WindowsTargetPlatformVersion>$(LatestTargetPlatformVersion)</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <TargetVersion>Windows10</TargetVersion>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <ConfigurationType>Driver</ConfigurationType>
+    <DriverType>WDM</DriverType>
+    <_NT_TARGET_VERSION>0x0A00</_NT_TARGET_VERSION>
+    <ALLOW_DATE_TIME>1</ALLOW_DATE_TIME>
+    <Driver_SpectreMitigation>false</Driver_SpectreMitigation>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug - Infinityhook|x64'" Label="Configuration">
+    <TargetVersion>Windows10</TargetVersion>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <ConfigurationType>Driver</ConfigurationType>
+    <DriverType>WDM</DriverType>
+    <_NT_TARGET_VERSION>0x0A00</_NT_TARGET_VERSION>
+    <ALLOW_DATE_TIME>1</ALLOW_DATE_TIME>
+    <Driver_SpectreMitigation>false</Driver_SpectreMitigation>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <TargetVersion>Windows10</TargetVersion>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <ConfigurationType>Driver</ConfigurationType>
+    <DriverType>WDM</DriverType>
+    <_NT_TARGET_VERSION>0x0A00</_NT_TARGET_VERSION>
+    <ALLOW_DATE_TIME>1</ALLOW_DATE_TIME>
+    <Driver_SpectreMitigation>false</Driver_SpectreMitigation>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release - Infinityhook|x64'" Label="Configuration">
+    <TargetVersion>Windows10</TargetVersion>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <ConfigurationType>Driver</ConfigurationType>
+    <DriverType>WDM</DriverType>
+    <_NT_TARGET_VERSION>0x0A00</_NT_TARGET_VERSION>
+    <ALLOW_DATE_TIME>1</ALLOW_DATE_TIME>
+    <Driver_SpectreMitigation>false</Driver_SpectreMitigation>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DebuggerFlavor>DbgengKernelDebugger</DebuggerFlavor>
+    <IncludePath>$(VC_IncludePath);$(KM_IncludePath);$(KIT_SHARED_IncludePath)</IncludePath>
+    <ExternalIncludePath>$(ExternalIncludePath)</ExternalIncludePath>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <EnableInf2cat>false</EnableInf2cat>
+    <IntDir>$(SolutionDir)intermediate\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug - Infinityhook|x64'">
+    <DebuggerFlavor>DbgengKernelDebugger</DebuggerFlavor>
+    <IncludePath>$(VC_IncludePath);$(KM_IncludePath);$(KIT_SHARED_IncludePath)</IncludePath>
+    <ExternalIncludePath>$(ExternalIncludePath)</ExternalIncludePath>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <EnableInf2cat>false</EnableInf2cat>
+    <IntDir>$(SolutionDir)intermediate\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DebuggerFlavor>DbgengKernelDebugger</DebuggerFlavor>
+    <IncludePath>$(VC_IncludePath);$(KM_IncludePath);$(KIT_SHARED_IncludePath)</IncludePath>
+    <ExternalIncludePath>$(ExternalIncludePath)</ExternalIncludePath>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <EnableInf2cat>false</EnableInf2cat>
+    <IntDir>$(SolutionDir)intermediate\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release - Infinityhook|x64'">
+    <DebuggerFlavor>DbgengKernelDebugger</DebuggerFlavor>
+    <IncludePath>$(VC_IncludePath);$(KM_IncludePath);$(KIT_SHARED_IncludePath)</IncludePath>
+    <ExternalIncludePath>$(ExternalIncludePath)</ExternalIncludePath>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <EnableInf2cat>false</EnableInf2cat>
+    <IntDir>$(SolutionDir)intermediate\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug - Infinityhook|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalIncludeDirectories>$(VC_IncludePath);$(KM_IncludePath);$(KIT_SHARED_IncludePath);..\..\thirdparty;..\..\thirdparty\systeminformer\phnt\include;..\..\thirdparty\systeminformer\KSystemInformer\include;..\..\thirdparty\zydis\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WppEnabled>true</WppEnabled>
+      <WppKernelMode>true</WppKernelMode>
+      <WppScanConfigurationData>
+      </WppScanConfigurationData>
+      <WppTraceFunction>WPP_PRINT(LEVEL,EVENT,MSG,...)</WppTraceFunction>
+      <WppFileExtensions>.c.cpp.h.hpp</WppFileExtensions>
+      <WppPreserveExtensions>.c.cpp.h.hpp</WppPreserveExtensions>
+      <PreprocessorDefinitions>SCOPE_GUARD_NO_THROW_ACTION;PHNT_MODE=PHNT_MODE_KERNEL;TMH_FILE=%(FileName)%(Extension).tmh;LAZY_IMPORTER_NO_FORCEINLINE;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4201;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <AdditionalOptions>/Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>..\..\ThirdParty\zydis\msvc\bin\DebugX64Kernel;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Zydis.lib;Zycore.lib;cng.lib;Cng.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/INTEGRITYCHECK %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <DriverSign>
+      <FileDigestAlgorithm>sha256</FileDigestAlgorithm>
+    </DriverSign>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug - Infinityhook|x64'">
+    <ClCompile>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalIncludeDirectories>$(VC_IncludePath);$(KM_IncludePath);$(KIT_SHARED_IncludePath);..\..\thirdparty;..\..\thirdparty\systeminformer\phnt\include;..\..\thirdparty\systeminformer\KSystemInformer\include;..\..\thirdparty\zydis\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WppEnabled>true</WppEnabled>
+      <WppKernelMode>true</WppKernelMode>
+      <WppScanConfigurationData>
+      </WppScanConfigurationData>
+      <WppTraceFunction>WPP_PRINT(LEVEL,EVENT,MSG,...)</WppTraceFunction>
+      <WppFileExtensions>.c.cpp.h.hpp</WppFileExtensions>
+      <WppPreserveExtensions>.c.cpp.h.hpp</WppPreserveExtensions>
+      <PreprocessorDefinitions>SCOPE_GUARD_NO_THROW_ACTION;SYSCALL_HOOK_TYPE=SYSCALL_HOOK_INFINITY_HOOK;PHNT_MODE=PHNT_MODE_KERNEL;TMH_FILE=%(FileName)%(Extension).tmh;LAZY_IMPORTER_NO_FORCEINLINE;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4201;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <AdditionalOptions>/Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>..\..\ThirdParty\zydis\msvc\bin\DebugX64Kernel;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Zydis.lib;Zycore.lib;cng.lib;Cng.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/INTEGRITYCHECK %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <DriverSign>
+      <FileDigestAlgorithm>sha256</FileDigestAlgorithm>
+    </DriverSign>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release - Infinityhook|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalIncludeDirectories>$(VC_IncludePath);$(KM_IncludePath);$(KIT_SHARED_IncludePath);..\..\thirdparty;..\..\thirdparty\systeminformer\phnt\include;..\..\thirdparty\systeminformer\KSystemInformer\include;..\..\thirdparty\zydis\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WppEnabled>true</WppEnabled>
+      <PreprocessorDefinitions>SCOPE_GUARD_NO_THROW_ACTION;PHNT_MODE=PHNT_MODE_KERNEL;TMH_FILE=%(FileName)%(Extension).tmh;_WIN64;_AMD64_;AMD64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4201;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <AdditionalOptions>/Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <ControlFlowGuard>false</ControlFlowGuard>
+      <Optimization>MinSpace</Optimization>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WppTraceFunction>WPP_PRINT(LEVEL,EVENT,MSG,...)</WppTraceFunction>
+      <WppFileExtensions>.c.cpp.h.hpp</WppFileExtensions>
+      <WppPreserveExtensions>.c.cpp.h.hpp</WppPreserveExtensions>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>..\..\thirdparty\zydis\msvc\bin\ReleaseX64Kernel;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Zydis.lib;Zycore.lib;cng.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/INTEGRITYCHECK %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <DriverSign>
+      <FileDigestAlgorithm>sha256</FileDigestAlgorithm>
+    </DriverSign>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release - Infinityhook|x64'">
+    <ClCompile>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalIncludeDirectories>$(VC_IncludePath);$(KM_IncludePath);$(KIT_SHARED_IncludePath);..\..\thirdparty;..\..\thirdparty\systeminformer\phnt\include;..\..\thirdparty\systeminformer\KSystemInformer\include;..\..\thirdparty\zydis\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WppEnabled>true</WppEnabled>
+      <PreprocessorDefinitions>SCOPE_GUARD_NO_THROW_ACTION;SYSCALL_HOOK_TYPE=SYSCALL_HOOK_INFINITY_HOOK;PHNT_MODE=PHNT_MODE_KERNEL;TMH_FILE=%(FileName)%(Extension).tmh;_WIN64;_AMD64_;AMD64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4201;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <AdditionalOptions>/Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <ControlFlowGuard>false</ControlFlowGuard>
+      <Optimization>MinSpace</Optimization>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WppTraceFunction>WPP_PRINT(LEVEL,EVENT,MSG,...)</WppTraceFunction>
+      <WppFileExtensions>.c.cpp.h.hpp</WppFileExtensions>
+      <WppPreserveExtensions>.c.cpp.h.hpp</WppPreserveExtensions>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>..\..\thirdparty\zydis\msvc\bin\ReleaseX64Kernel;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Zydis.lib;Zycore.lib;cng.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/INTEGRITYCHECK %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <DriverSign>
+      <FileDigestAlgorithm>sha256</FileDigestAlgorithm>
+    </DriverSign>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <FilesToPackage Include="$(TargetPath)" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="bypass.cpp" />
+    <ClCompile Include="callbacks.cpp" />
+    <ClCompile Include="hde\hde64.cpp" />
+    <ClCompile Include="ioctl.cpp" />
+    <ClCompile Include="crc32.cpp" />
+    <ClCompile Include="drivermain.cpp" />
+    <ClCompile Include="dynamic.cpp" />
+    <ClCompile Include="hooks.cpp" />
+    <ClCompile Include="inject.cpp" />
+    <ClCompile Include="misc.cpp" />
+    <ClCompile Include="mutex.cpp" />
+    <ClCompile Include="syscall_hook.cpp" />
+    <ClCompile Include="syscall_table.cpp" />
+    <ClCompile Include="threads.cpp" />
+    <ClCompile Include="processes.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\thirdparty\fnv1a\include\fnv1a.hpp" />
+    <ClInclude Include="..\..\ThirdParty\scope_guard\include\scope_guard.hpp" />
+    <ClInclude Include="..\shared\shared.hpp" />
+    <ClInclude Include="bypass.hpp" />
+    <ClInclude Include="callbacks.hpp" />
+    <ClInclude Include="hde\hde64.h" />
+    <ClInclude Include="hde\pstdint.h" />
+    <ClInclude Include="hde\table64.h" />
+    <ClInclude Include="ioctl.hpp" />
+    <ClInclude Include="crc32.hpp" />
+    <ClInclude Include="def.hpp" />
+    <ClInclude Include="dynamic.hpp" />
+    <ClInclude Include="hooks.hpp" />
+    <ClInclude Include="includes.hpp" />
+    <ClInclude Include="inject.hpp" />
+    <ClInclude Include="memory.hpp" />
+    <ClInclude Include="misc.hpp" />
+    <ClInclude Include="mutex.hpp" />
+    <ClInclude Include="syscall_table.hpp" />
+    <ClInclude Include="threads.hpp" />
+    <ClInclude Include="processes.hpp" />
+    <ClInclude Include="syscall_hook.hpp" />
+    <ClInclude Include="trace.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

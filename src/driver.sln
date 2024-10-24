@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "driver", "driver\driver.vcxproj", "{017507CD-66FF-4256-82A5-1A3B799DBFB5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test-driver", "test-driver\test-driver.vcxproj", "{1CF4258D-6C87-4F5B-A618-AC21228BF42C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug - Infinityhook|x64 = Debug - Infinityhook|x64
+		Debug|x64 = Debug|x64
+		Release - Infinityhook|x64 = Release - Infinityhook|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{017507CD-66FF-4256-82A5-1A3B799DBFB5}.Debug - Infinityhook|x64.ActiveCfg = Debug - Infinityhook|x64
+		{017507CD-66FF-4256-82A5-1A3B799DBFB5}.Debug - Infinityhook|x64.Build.0 = Debug - Infinityhook|x64
+		{017507CD-66FF-4256-82A5-1A3B799DBFB5}.Debug - Infinityhook|x64.Deploy.0 = Debug - Infinityhook|x64
+		{017507CD-66FF-4256-82A5-1A3B799DBFB5}.Debug|x64.ActiveCfg = Debug|x64
+		{017507CD-66FF-4256-82A5-1A3B799DBFB5}.Debug|x64.Build.0 = Debug|x64
+		{017507CD-66FF-4256-82A5-1A3B799DBFB5}.Debug|x64.Deploy.0 = Debug|x64
+		{017507CD-66FF-4256-82A5-1A3B799DBFB5}.Release - Infinityhook|x64.ActiveCfg = Release - Infinityhook|x64
+		{017507CD-66FF-4256-82A5-1A3B799DBFB5}.Release - Infinityhook|x64.Build.0 = Release - Infinityhook|x64
+		{017507CD-66FF-4256-82A5-1A3B799DBFB5}.Release - Infinityhook|x64.Deploy.0 = Release - Infinityhook|x64
+		{017507CD-66FF-4256-82A5-1A3B799DBFB5}.Release|x64.ActiveCfg = Release|x64
+		{017507CD-66FF-4256-82A5-1A3B799DBFB5}.Release|x64.Build.0 = Release|x64
+		{017507CD-66FF-4256-82A5-1A3B799DBFB5}.Release|x64.Deploy.0 = Release|x64
+		{1CF4258D-6C87-4F5B-A618-AC21228BF42C}.Debug - Infinityhook|x64.ActiveCfg = Debug|x64
+		{1CF4258D-6C87-4F5B-A618-AC21228BF42C}.Debug|x64.ActiveCfg = Debug|x64
+		{1CF4258D-6C87-4F5B-A618-AC21228BF42C}.Debug|x64.Build.0 = Debug|x64
+		{1CF4258D-6C87-4F5B-A618-AC21228BF42C}.Release - Infinityhook|x64.ActiveCfg = Release - Infinityhook|x64
+		{1CF4258D-6C87-4F5B-A618-AC21228BF42C}.Release - Infinityhook|x64.Build.0 = Release - Infinityhook|x64
+		{1CF4258D-6C87-4F5B-A618-AC21228BF42C}.Release|x64.ActiveCfg = Release|x64
+		{1CF4258D-6C87-4F5B-A618-AC21228BF42C}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53FFB10C-1508-49CF-92E3-CC7A225C59B0}
+	EndGlobalSection
+EndGlobal
