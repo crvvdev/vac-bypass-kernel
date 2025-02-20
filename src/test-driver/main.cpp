@@ -129,7 +129,7 @@ int handleBypass(const std::vector<std::wstring> &args)
 {
     NTSTATUS status;
 
-    for (size_t i = 3; i < args.size(); ++i)
+    for (size_t i = 2; i < args.size(); ++i)
     {
         if (args[i].find(L"/enable") != std::string::npos)
         {
